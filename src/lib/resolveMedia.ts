@@ -3,7 +3,7 @@ import path from "node:path";
 import type { Project, ProjectMedia } from "@/content/projects";
 
 const IMAGE_EXT = new Set([".png", ".jpg", ".jpeg", ".webp", ".gif"]);
-const VIDEO_EXT = new Set([".mp4", ".webm", ".mov"]);
+const VIDEO_EXT = new Set([".mp4", ".webm", ".mov", ".m4v"]);
 
 function labelFromFilename(filename: string): string {
   const base = filename.replace(/\.[^.]+$/, "");
