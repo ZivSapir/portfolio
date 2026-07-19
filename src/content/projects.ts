@@ -31,7 +31,6 @@ export type Project = {
   stackNotes: string[];
   media: ProjectMedia[];
   featured?: boolean;
-  pdfUrl?: string;
 };
 
 export const projects: Project[] = [
@@ -279,7 +278,7 @@ export const projects: Project[] = [
     stackNotes: [
       "Focus: data engineering + analysis pipeline (ingest, clean, grid, calibrate, visualize), not a consumer app.",
       "Prototype phone app existed for collection experiments; usable density came from WeatherSignal.",
-      "Full thesis PDF available on this page.",
+      "Full thesis stays private — happy to discuss methods and results on request.",
     ],
     media: [
       {
@@ -288,7 +287,6 @@ export const projects: Project[] = [
         label: "Thesis figures",
       },
     ],
-    pdfUrl: "/docs/ziv-sapir-msc-thesis.pdf",
   },
 ];
 
