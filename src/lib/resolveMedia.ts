@@ -5,6 +5,11 @@ import type { Project, ProjectMedia } from "@/content/projects";
 const IMAGE_EXT = new Set([".png", ".jpg", ".jpeg", ".webp", ".gif"]);
 const VIDEO_EXT = new Set([".mp4", ".webm", ".mov", ".m4v"]);
 
+function publicAssetPath(assetPath: string): string {
+  const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  return `${base}${assetPath}`;
+}
+
 function labelFromFilename(filename: string): string {
   const base = filename.replace(/\.[^.]+$/, "");
   return base
@@ -49,13 +54,13 @@ export async function resolveProjectMedia(
   const resolved: ProjectMedia[] = [
     ...images.map((filename) => ({
       type: "image" as const,
-      src: `/screenshots/${project.slug}/${filename}`,
+      src: publicAssetPath(`/screenshots/${project.slug}/${filename}`),
       alt: `${project.title} — ${labelFromFilename(filename)}`,
       label: labelFromFilename(filename),
     })),
     ...videos.map((filename) => ({
       type: "video" as const,
-      src: `/videos/${project.slug}/${filename}`,
+      src: publicAssetPath(`/videos/${project.slug}/${filename}`),
       alt: `${project.title} — ${labelFromFilename(filename)}`,
       label: labelFromFilename(filename),
     })),

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type { ProjectMedia } from "@/content/projects";
 
 type MediaGalleryProps = {
@@ -18,23 +17,29 @@ export function MediaGallery({
           className="overflow-hidden rounded-sm border border-border bg-placeholder animate-fade-in"
         >
           {item.type === "image" && item.src ? (
-            <Image
+            // Plain <img>: Next/Image + static export can miss GitHub Pages basePath
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
               src={item.src}
               alt={item.alt}
-              width={1200}
-              height={800}
               className="h-full w-full object-cover"
+              loading="lazy"
             />
           ) : null}
           {item.type === "video" && item.src ? (
             <video
-              className="h-full w-full object-cover"
+              className="aspect-[4/3] h-full w-full bg-foreground/90 object-contain"
               controls
               playsInline
               preload="metadata"
               aria-label={item.alt}
             >
-              <source src={item.src} />
+              <source
+                src={item.src}
+                type={
+                  item.src.endsWith(".webm") ? "video/webm" : "video/mp4"
+                }
+              />
             </video>
           ) : null}
           {item.type === "placeholder" ? (
