@@ -21,11 +21,13 @@ export const metadata: Metadata = {
     template: `%s · ${site.name}`,
   },
   description: site.pitch,
+  metadataBase: new URL("https://zivsapir.github.io/portfolio/"),
   openGraph: {
     title: `${site.name} — ${site.title}`,
     description: site.pitch,
     type: "website",
     locale: "en_US",
+    url: "https://zivsapir.github.io/portfolio/",
   },
   twitter: {
     card: "summary_large_image",

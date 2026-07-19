@@ -11,7 +11,7 @@
 - Portfolio = marketing / case-study site only (no private product source)
 - Real screenshots from the user (placeholders until then)
 - Honest stack and status badges
-- Ship small slices; deploy on Vercel
+- Ship small slices; deploy on GitHub Pages
 
 ---
 
@@ -43,8 +43,8 @@
 ### Step 4 — Polish & publish
 
 - [x] Favicon / OG meta / page titles
-- [ ] Push public GitHub repo (ZivSapir)
-- [ ] Deploy Vercel
+- [x] Push public GitHub repo (ZivSapir)
+- [x] GitHub Pages workflow (static export) — enable Pages → Actions if needed
 - [ ] Link from LinkedIn / CV
 
 ---

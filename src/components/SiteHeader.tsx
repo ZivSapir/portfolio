@@ -12,24 +12,24 @@ export function SiteHeader() {
           {site.name}
         </Link>
         <nav className="flex items-center gap-6 text-sm text-muted">
-          <a
+          <Link
             href="/#projects"
             className="transition-colors hover:text-foreground"
           >
             Projects
-          </a>
-          <a
+          </Link>
+          <Link
             href="/#about"
             className="transition-colors hover:text-foreground"
           >
             About
-          </a>
-          <a
+          </Link>
+          <Link
             href="/#contact"
             className="transition-colors hover:text-foreground"
           >
             Contact
-          </a>
+          </Link>
         </nav>
       </div>
     </header>

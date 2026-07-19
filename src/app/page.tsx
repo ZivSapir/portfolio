@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ProjectCard } from "@/components/ProjectCard";
 import { projects } from "@/content/projects";
 import { site } from "@/content/site";
@@ -28,18 +29,18 @@ export default function HomePage() {
             {site.pitch}
           </p>
           <div className="mt-10 flex flex-wrap gap-3 animate-fade-up-delay-2">
-            <a
-              href="#projects"
+            <Link
+              href="/#projects"
               className="inline-flex items-center justify-center rounded-sm bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-deep"
             >
               View projects
-            </a>
-            <a
-              href="#contact"
+            </Link>
+            <Link
+              href="/#contact"
               className="inline-flex items-center justify-center rounded-sm border border-border bg-surface/80 px-5 py-2.5 text-sm font-medium text-foreground backdrop-blur transition-colors hover:border-accent hover:text-accent"
             >
               Contact
-            </a>
+            </Link>
           </div>
         </div>
       </section>

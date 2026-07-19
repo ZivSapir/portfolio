@@ -25,7 +25,8 @@ Use this file to onboard a new Cursor session. **Read this entire file before co
 
 - **Pitch:** Builds end-to-end product apps — Expo mobile clients, NestJS APIs, and practical AI tooling — with clear architecture choices, not demos for demos’ sake.
 - **Role story:** Dual — React Native / mobile + full-stack. Home Co-Op is the flagship; Job Chaser shows AI + product craft; Trip Buddy shows deliberate architecture-in-progress.
-- **Deploy:** Vercel · public repo under ZivSapir
+- **Deploy:** GitHub Pages · public repo https://github.com/ZivSapir/portfolio
+- **Live URL:** https://zivsapir.github.io/portfolio/
 
 ---
 
