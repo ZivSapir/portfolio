@@ -24,7 +24,7 @@ export function MediaGallery({
               className="overflow-hidden rounded-sm border border-border bg-placeholder animate-fade-in"
             >
               {item.type === "image" && item.src ? (
-                <div className="flex h-[26rem] items-center justify-center bg-[#e8eef2] px-4 py-5 md:h-[28rem]">
+                <div className="flex h-[26rem] items-center justify-center bg-placeholder px-4 py-5 md:h-[28rem]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={item.src}

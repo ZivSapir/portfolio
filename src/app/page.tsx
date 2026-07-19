@@ -9,7 +9,7 @@ export default function HomePage() {
       <section className="relative min-h-[100svh] overflow-hidden border-b border-border">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_15%_20%,var(--hero-glow),transparent_55%),linear-gradient(160deg,#eef3f5_0%,var(--background)_45%,#e7f0ef_100%)]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_15%_20%,var(--hero-glow),transparent_55%),radial-gradient(ellipse_70%_50%_at_85%_10%,var(--hero-glow-lilac),transparent_50%),linear-gradient(160deg,#eef2fb_0%,var(--background)_48%,#f0eaf8_100%)]"
         />
         <div
           aria-hidden

@@ -7,8 +7,8 @@ type StatusBadgeProps = {
 
 const styles: Record<ProjectStatus, string> = {
   "live-mvp": "bg-accent-soft text-accent-deep",
-  prototype: "bg-[#e8eef5] text-[#2f4a63]",
-  "in-progress": "bg-[#f3efe6] text-[#5c4a2a]",
+  prototype: "bg-accent-blue-soft text-[#3d5f86]",
+  "in-progress": "bg-[#f3eaf8] text-[#6b4f7a]",
 };
 
 export function StatusBadge({

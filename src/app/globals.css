@@ -1,16 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f4f6f8;
-  --foreground: #1a1f24;
-  --muted: #5c6770;
+  /* Soft blue + lilac, pastel supporting tones */
+  --background: #f3f5fb;
+  --foreground: #2a2740;
+  --muted: #6d6a85;
   --surface: #ffffff;
-  --border: #d5dde3;
-  --accent: #0f6e6a;
-  --accent-soft: #d7efed;
-  --accent-deep: #0a4f4c;
-  --hero-glow: #c5dce0;
-  --placeholder: #e8eef2;
+  --border: #ddd8eb;
+  --accent: #7b6db5;
+  --accent-soft: #ebe4f8;
+  --accent-deep: #5a4d96;
+  --accent-blue: #6b9fd4;
+  --accent-blue-soft: #dceaf8;
+  --hero-glow: #c9daf5;
+  --hero-glow-lilac: #ddd0f0;
+  --placeholder: #e8ecf7;
 }
 
 @theme inline {
@@ -22,7 +26,10 @@
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
   --color-accent-deep: var(--accent-deep);
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-blue-soft: var(--accent-blue-soft);
   --color-hero-glow: var(--hero-glow);
+  --color-hero-glow-lilac: var(--hero-glow-lilac);
   --color-placeholder: var(--placeholder);
   --font-sans: var(--font-source-sans), "Source Sans 3", system-ui, sans-serif;
   --font-display: var(--font-fraunces), "Fraunces", Georgia, serif;

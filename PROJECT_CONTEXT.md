@@ -113,7 +113,7 @@ Filenames: `01-lists.png`, `02-calendar.png`, etc. Placeholders until user suppl
 
 ## Visual direction
 
-Light, serious, editorial — deep charcoal text, cool slate/teal accent. Expressive display font + clean sans. Avoid purple AI-slop, cream+terracotta, broadsheet dense columns. Hero: brand-first, one composition. 2–3 intentional motions.
+Light, soft editorial — soft lilac + light blue accents, pastel supporting tones. Expressive display font + clean sans. Hero: brand-first, one composition. 2–3 intentional motions.
 
 ---
 
