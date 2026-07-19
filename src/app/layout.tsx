@@ -21,7 +21,6 @@ export const metadata: Metadata = {
     template: `%s · ${site.name}`,
   },
   description: site.pitch,
-  metadataBase: new URL("https://zivsapir.vercel.app"),
   openGraph: {
     title: `${site.name} — ${site.title}`,
     description: site.pitch,
