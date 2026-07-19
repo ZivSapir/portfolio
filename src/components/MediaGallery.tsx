@@ -18,29 +18,30 @@ export function MediaGallery({
   );
   const videos = media.filter((item) => item.type === "video");
 
-  // Desktop screenshots are often ~1024px; avoid CSS upscaling past native size (looks soft on Retina).
+  // Desktop screenshots are often ~1024px. Cap a bit under native + contrast rendering
+  // so Retina browsers don’t soften UI text as much.
   const frameClass =
     variant === "document"
       ? "flex h-[30rem] items-center justify-center bg-placeholder px-3 py-4 md:h-[34rem]"
       : variant === "desktop"
-        ? "flex items-center justify-center bg-placeholder px-4 py-5"
+        ? "flex items-center justify-center bg-placeholder px-3 py-4"
         : "flex h-[26rem] items-center justify-center bg-placeholder px-4 py-5 md:h-[28rem]";
 
   const gridClass =
     variant === "document"
       ? "grid gap-5 md:grid-cols-2"
       : variant === "desktop"
-        ? "mx-auto grid max-w-[1024px] gap-6"
+        ? "mx-auto grid max-w-[900px] gap-6"
         : "grid gap-5 sm:grid-cols-2 lg:grid-cols-3";
 
   const imageClass =
     variant === "desktop"
-      ? "h-auto w-full max-w-full object-contain"
+      ? "h-auto w-full max-w-full object-contain [image-rendering:-webkit-optimize-contrast]"
       : "max-h-full w-auto max-w-full object-contain";
 
   const videoFigureClass =
     variant === "desktop"
-      ? "w-full max-w-[1024px] overflow-hidden rounded-sm border border-border bg-placeholder animate-fade-in"
+      ? "w-full max-w-[900px] overflow-hidden rounded-sm border border-border bg-placeholder animate-fade-in"
       : "w-full max-w-md overflow-hidden rounded-sm border border-border bg-placeholder animate-fade-in md:max-w-lg";
 
   const videoClass =
