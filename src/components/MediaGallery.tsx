@@ -1,9 +1,11 @@
 import type { ProjectMedia } from "@/content/projects";
 
+type MediaVariant = "phone" | "document" | "desktop";
+
 type MediaGalleryProps = {
   media: ProjectMedia[];
   projectTitle: string;
-  variant?: "phone" | "document";
+  variant?: MediaVariant;
 };
 
 export function MediaGallery({
@@ -15,13 +17,35 @@ export function MediaGallery({
     (item) => item.type === "image" || item.type === "placeholder",
   );
   const videos = media.filter((item) => item.type === "video");
-  const isDocument = variant === "document";
-  const frameClass = isDocument
-    ? "flex h-[30rem] items-center justify-center bg-placeholder px-3 py-4 md:h-[34rem]"
-    : "flex h-[26rem] items-center justify-center bg-placeholder px-4 py-5 md:h-[28rem]";
-  const gridClass = isDocument
-    ? "grid gap-5 md:grid-cols-2"
-    : "grid gap-5 sm:grid-cols-2 lg:grid-cols-3";
+
+  const frameClass =
+    variant === "document"
+      ? "flex h-[30rem] items-center justify-center bg-placeholder px-3 py-4 md:h-[34rem]"
+      : variant === "desktop"
+        ? "flex min-h-[22rem] items-center justify-center bg-placeholder px-4 py-5 md:min-h-[28rem]"
+        : "flex h-[26rem] items-center justify-center bg-placeholder px-4 py-5 md:h-[28rem]";
+
+  const gridClass =
+    variant === "document"
+      ? "grid gap-5 md:grid-cols-2"
+      : variant === "desktop"
+        ? "grid gap-6"
+        : "grid gap-5 sm:grid-cols-2 lg:grid-cols-3";
+
+  const imageClass =
+    variant === "desktop"
+      ? "h-auto w-full max-h-[36rem] object-contain md:max-h-[40rem]"
+      : "max-h-full w-auto max-w-full object-contain";
+
+  const videoFigureClass =
+    variant === "desktop"
+      ? "w-full max-w-5xl overflow-hidden rounded-sm border border-border bg-placeholder animate-fade-in"
+      : "w-full max-w-md overflow-hidden rounded-sm border border-border bg-placeholder animate-fade-in md:max-w-lg";
+
+  const videoClass =
+    variant === "desktop"
+      ? "mx-auto max-h-[36rem] w-full object-contain md:max-h-[42rem]"
+      : "mx-auto max-h-[26rem] w-full object-contain md:max-h-[28rem]";
 
   return (
     <div className="space-y-8">
@@ -38,7 +62,7 @@ export function MediaGallery({
                   <img
                     src={item.src}
                     alt={item.alt}
-                    className="max-h-full w-auto max-w-full object-contain"
+                    className={imageClass}
                     loading="lazy"
                   />
                 </div>
@@ -72,12 +96,12 @@ export function MediaGallery({
           {videos.map((item) => (
             <figure
               key={`${item.type}-${item.label ?? item.alt}`}
-              className="w-full max-w-md overflow-hidden rounded-sm border border-border bg-placeholder animate-fade-in md:max-w-lg"
+              className={videoFigureClass}
             >
               {item.src ? (
-                <div className="bg-foreground/90 px-3 py-4">
+                <div className="bg-foreground/90 px-3 py-4 md:px-5 md:py-5">
                   <video
-                    className="mx-auto max-h-[26rem] w-full object-contain md:max-h-[28rem]"
+                    className={videoClass}
                     controls
                     playsInline
                     preload="metadata"

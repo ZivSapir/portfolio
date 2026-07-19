@@ -119,7 +119,10 @@ export function CaseStudy({
           <MediaGallery
             media={project.media}
             projectTitle={project.title}
-            variant={isResearch ? "document" : "phone"}
+            variant={
+              project.mediaVariant ??
+              (isResearch ? "document" : "phone")
+            }
           />
         </section>
 

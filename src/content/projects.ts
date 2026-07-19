@@ -30,6 +30,7 @@ export type Project = {
   smartChoicesTitle?: string;
   stackNotes: string[];
   media: ProjectMedia[];
+  mediaVariant?: "phone" | "document" | "desktop";
   featured?: boolean;
 };
 
@@ -111,6 +112,7 @@ export const projects: Project[] = [
     shortTitle: "Job Chaser",
     status: "prototype",
     statusLabel: "Working prototype",
+    mediaVariant: "desktop",
     oneLiner:
       "AI-assisted job pipeline — paste a URL or command, edit in a spreadsheet UI.",
     blurb:
