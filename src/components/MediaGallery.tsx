@@ -18,33 +18,34 @@ export function MediaGallery({
   );
   const videos = media.filter((item) => item.type === "video");
 
+  // Desktop screenshots are often ~1024px; avoid CSS upscaling past native size (looks soft on Retina).
   const frameClass =
     variant === "document"
       ? "flex h-[30rem] items-center justify-center bg-placeholder px-3 py-4 md:h-[34rem]"
       : variant === "desktop"
-        ? "flex min-h-[22rem] items-center justify-center bg-placeholder px-4 py-5 md:min-h-[28rem]"
+        ? "flex items-center justify-center bg-placeholder px-4 py-5"
         : "flex h-[26rem] items-center justify-center bg-placeholder px-4 py-5 md:h-[28rem]";
 
   const gridClass =
     variant === "document"
       ? "grid gap-5 md:grid-cols-2"
       : variant === "desktop"
-        ? "grid gap-6"
+        ? "mx-auto grid max-w-[1024px] gap-6"
         : "grid gap-5 sm:grid-cols-2 lg:grid-cols-3";
 
   const imageClass =
     variant === "desktop"
-      ? "h-auto w-full max-h-[36rem] object-contain md:max-h-[40rem]"
+      ? "h-auto w-full max-w-full object-contain"
       : "max-h-full w-auto max-w-full object-contain";
 
   const videoFigureClass =
     variant === "desktop"
-      ? "w-full max-w-5xl overflow-hidden rounded-sm border border-border bg-placeholder animate-fade-in"
+      ? "w-full max-w-[1024px] overflow-hidden rounded-sm border border-border bg-placeholder animate-fade-in"
       : "w-full max-w-md overflow-hidden rounded-sm border border-border bg-placeholder animate-fade-in md:max-w-lg";
 
   const videoClass =
     variant === "desktop"
-      ? "mx-auto max-h-[36rem] w-full object-contain md:max-h-[42rem]"
+      ? "mx-auto h-auto w-full max-w-full object-contain"
       : "mx-auto max-h-[26rem] w-full object-contain md:max-h-[28rem]";
 
   return (
