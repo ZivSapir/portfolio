@@ -17,14 +17,14 @@ export function MediaGallery({
   return (
     <div className="space-y-8">
       {images.length > 0 ? (
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {images.map((item) => (
             <figure
               key={`${item.type}-${item.label ?? item.alt}`}
               className="overflow-hidden rounded-sm border border-border bg-placeholder animate-fade-in"
             >
               {item.type === "image" && item.src ? (
-                <div className="flex h-72 items-center justify-center bg-[#e8eef2] px-3 py-4 md:h-80">
+                <div className="flex h-[26rem] items-center justify-center bg-[#e8eef2] px-4 py-5 md:h-[28rem]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={item.src}
@@ -35,7 +35,7 @@ export function MediaGallery({
                 </div>
               ) : null}
               {item.type === "placeholder" ? (
-                <div className="flex h-72 flex-col items-center justify-center gap-2 px-6 text-center md:h-80">
+                <div className="flex h-[26rem] flex-col items-center justify-center gap-2 px-6 text-center md:h-[28rem]">
                   <p className="font-display text-lg text-foreground/80">
                     {item.label ?? "Screenshot"}
                   </p>
@@ -61,12 +61,12 @@ export function MediaGallery({
           {videos.map((item) => (
             <figure
               key={`${item.type}-${item.label ?? item.alt}`}
-              className="w-full max-w-sm overflow-hidden rounded-sm border border-border bg-placeholder animate-fade-in md:max-w-md"
+              className="w-full max-w-md overflow-hidden rounded-sm border border-border bg-placeholder animate-fade-in md:max-w-lg"
             >
               {item.src ? (
-                <div className="bg-foreground/90 px-2 py-3">
+                <div className="bg-foreground/90 px-3 py-4">
                   <video
-                    className="mx-auto max-h-72 w-full object-contain md:max-h-80"
+                    className="mx-auto max-h-[26rem] w-full object-contain md:max-h-[28rem]"
                     controls
                     playsInline
                     preload="metadata"
