@@ -95,8 +95,8 @@ export default function HomePage() {
             Contact
           </h2>
           <p className="mt-3 max-w-xl text-muted">
-            Open to React Native and full-stack roles. Happy to walk through
-            private codebases on request.
+            Open to mobile, frontend, and full-stack roles. Happy to walk
+            through private codebases on request.
           </p>
           <ul className="mt-8 space-y-3 text-base">
             <li>

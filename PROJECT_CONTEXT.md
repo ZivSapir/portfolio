@@ -9,8 +9,9 @@ Use this file to onboard a new Cursor session. **Read this entire file before co
 ## Who I am
 
 - Display name: **Ziv Sapir**
-- Title: React Native & Full-Stack Developer
-- React Native developer at Wix; building full-stack personal products end-to-end
+- Title: Mobile & Full-Stack Engineer
+- Formerly Wix (QA/release → design-system / calendar / RN UI lib); building full-stack personal products end-to-end
+- Canonical background: `~/.cursor/ziv-knowledge-base.md` + `cv-studio/data/master.yaml`
 - Contact:
   - Email: zivsushiku@gmail.com
   - LinkedIn: https://www.linkedin.com/in/ziv-sapir-79413a217/
