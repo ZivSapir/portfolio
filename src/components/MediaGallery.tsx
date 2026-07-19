@@ -3,28 +3,37 @@ import type { ProjectMedia } from "@/content/projects";
 type MediaGalleryProps = {
   media: ProjectMedia[];
   projectTitle: string;
+  variant?: "phone" | "document";
 };
 
 export function MediaGallery({
   media,
   projectTitle,
+  variant = "phone",
 }: MediaGalleryProps) {
   const images = media.filter(
     (item) => item.type === "image" || item.type === "placeholder",
   );
   const videos = media.filter((item) => item.type === "video");
+  const isDocument = variant === "document";
+  const frameClass = isDocument
+    ? "flex h-[30rem] items-center justify-center bg-placeholder px-3 py-4 md:h-[34rem]"
+    : "flex h-[26rem] items-center justify-center bg-placeholder px-4 py-5 md:h-[28rem]";
+  const gridClass = isDocument
+    ? "grid gap-5 md:grid-cols-2"
+    : "grid gap-5 sm:grid-cols-2 lg:grid-cols-3";
 
   return (
     <div className="space-y-8">
       {images.length > 0 ? (
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className={gridClass}>
           {images.map((item) => (
             <figure
               key={`${item.type}-${item.label ?? item.alt}`}
               className="overflow-hidden rounded-sm border border-border bg-placeholder animate-fade-in"
             >
               {item.type === "image" && item.src ? (
-                <div className="flex h-[26rem] items-center justify-center bg-placeholder px-4 py-5 md:h-[28rem]">
+                <div className={frameClass}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={item.src}
@@ -35,7 +44,9 @@ export function MediaGallery({
                 </div>
               ) : null}
               {item.type === "placeholder" ? (
-                <div className="flex h-[26rem] flex-col items-center justify-center gap-2 px-6 text-center md:h-[28rem]">
+                <div
+                  className={`${frameClass} flex-col gap-2 px-6 text-center`}
+                >
                   <p className="font-display text-lg text-foreground/80">
                     {item.label ?? "Screenshot"}
                   </p>

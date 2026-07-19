@@ -71,8 +71,8 @@ export default function HomePage() {
               Projects
             </h2>
             <p className="mt-3 text-muted">
-              Case studies with the problem, the trade-offs, and what actually
-              shipped.
+              Product case studies plus M.Sc. research — what shipped, how it
+              was analyzed, and why the approach looked that way.
             </p>
           </div>
           <div>

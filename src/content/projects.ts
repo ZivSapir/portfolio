@@ -1,4 +1,8 @@
-export type ProjectStatus = "live-mvp" | "prototype" | "in-progress";
+export type ProjectStatus =
+  | "live-mvp"
+  | "prototype"
+  | "in-progress"
+  | "research";
 
 export type ProjectMedia = {
   type: "image" | "video" | "placeholder";
@@ -18,13 +22,16 @@ export type Project = {
   tech: string[];
   problem: string;
   betterThan: string[];
+  betterThanTitle?: string;
   smartChoices: {
     title: string;
     why: string;
   }[];
+  smartChoicesTitle?: string;
   stackNotes: string[];
   media: ProjectMedia[];
   featured?: boolean;
+  pdfUrl?: string;
 };
 
 export const projects: Project[] = [
@@ -222,6 +229,66 @@ export const projects: Project[] = [
         label: "Product UI — coming next",
       },
     ],
+  },
+  {
+    slug: "msc-thesis",
+    title: "Smartphone Pressure Data",
+    shortTitle: "M.Sc. Thesis",
+    status: "research",
+    statusLabel: "M.Sc. Thesis · 2024",
+    oneLiner:
+      "Large-scale Python analysis of crowdsourced smartphone barometer data vs ERA5.",
+    blurb:
+      "M.Sc. thesis (Tel Aviv University, Prof. Colin Price): evaluated whether smartphone barometers can support meteorological research — WeatherSignal ETL at scale, grid aggregation, ERA5 calibration, and four 2014 storm case studies including pressure-gradient wind estimates.",
+    tech: [
+      "Python",
+      "WeatherSignal",
+      "ERA5 / ECMWF",
+      "ETL",
+      "Linear regression",
+      "Geospatial grids",
+      "Time series",
+    ],
+    problem:
+      "Traditional pressure networks are sparse relative to how densely people carry phones. Flagship phones include accurate barometers — but crowdsourced readings are noisy (buildings, vehicles, calibration) and need rigorous processing before they can inform weather analysis.",
+    betterThanTitle: "What the analysis showed",
+    betterThan: [
+      "Crowdsourced WeatherSignal pressure can resolve major storm systems on maps after grid aggregation and sea-level correction.",
+      "Localized linear calibration against ERA5 markedly improves agreement versus a single coast-wide fit.",
+      "Pressure gradients from phone data relate strongly to wind — supporting meteorological use beyond static maps.",
+    ],
+    smartChoicesTitle: "Method choices",
+    smartChoices: [
+      {
+        title: "Pivot to WeatherSignal at scale",
+        why: "An early Android prototype showed the sensor idea works, but density was too low for event studies — so the research centered on ~700 CSVs / ~1 GB of WeatherSignal data instead of the app alone.",
+      },
+      {
+        title: "Grid + time aggregation before fancy models",
+        why: "Averaging samples into lat/lon cells and hourly bins made storm structures visible and comparable to reanalysis without overclaiming a production ML system.",
+      },
+      {
+        title: "Calibrate against ERA5",
+        why: "Pearson / linear-regression checks vs ECMWF reanalysis quantified bias and showed when local fits outperform regional ones.",
+      },
+      {
+        title: "Four storm case studies",
+        why: "Hurricane Arthur, Bertha, Gonzalo remnants over the UK, and Cyclone Qendresa — maps, time series, and gradient–wind analysis across different basins.",
+      },
+    ],
+    stackNotes: [
+      "Focus: data engineering + analysis pipeline (ingest, clean, grid, calibrate, visualize), not a consumer app.",
+      "Prototype phone app existed for collection experiments; usable density came from WeatherSignal.",
+      "Full thesis PDF available on this page.",
+    ],
+    media: [
+      {
+        type: "placeholder",
+        alt: "Thesis figure placeholder",
+        label: "Thesis figures",
+      },
+    ],
+    pdfUrl: "/docs/ziv-sapir-msc-thesis.pdf",
   },
 ];
 

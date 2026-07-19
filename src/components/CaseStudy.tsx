@@ -11,6 +11,12 @@ type CaseStudyProps = {
 export function CaseStudy({
   project,
 }: CaseStudyProps) {
+  const isResearch = project.status === "research";
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  const pdfHref = project.pdfUrl
+    ? `${basePath}${project.pdfUrl}`
+    : undefined;
+
   return (
     <article>
       <section className="relative overflow-hidden border-b border-border bg-surface">
@@ -47,13 +53,15 @@ export function CaseStudy({
 
       <div className="mx-auto max-w-5xl space-y-16 px-6 py-16 md:px-8 md:py-20">
         <section className="max-w-2xl space-y-3">
-          <h2 className="font-display text-2xl tracking-tight">Problem</h2>
+          <h2 className="font-display text-2xl tracking-tight">
+            {isResearch ? "Research question" : "Problem"}
+          </h2>
           <p className="leading-relaxed text-muted">{project.problem}</p>
         </section>
 
         <section className="space-y-5">
           <h2 className="font-display text-2xl tracking-tight">
-            Why this is better
+            {project.betterThanTitle ?? "Why this is better"}
           </h2>
           <ol className="space-y-4">
             {project.betterThan.map((point, index) => (
@@ -72,7 +80,7 @@ export function CaseStudy({
 
         <section className="space-y-6">
           <h2 className="font-display text-2xl tracking-tight">
-            Smart choices
+            {project.smartChoicesTitle ?? "Smart choices"}
           </h2>
           <ul className="grid gap-6 md:grid-cols-2">
             {project.smartChoices.map((choice) => (
@@ -90,7 +98,9 @@ export function CaseStudy({
         </section>
 
         <section className="space-y-4">
-          <h2 className="font-display text-2xl tracking-tight">Stack</h2>
+          <h2 className="font-display text-2xl tracking-tight">
+            {isResearch ? "Tools & methods" : "Stack"}
+          </h2>
           <ul className="flex flex-wrap gap-2">
             {project.tech.map((tag) => (
               <li
@@ -113,26 +123,39 @@ export function CaseStudy({
           <MediaGallery
             media={project.media}
             projectTitle={project.title}
+            variant={isResearch ? "document" : "phone"}
           />
         </section>
 
         <section className="border-t border-border pt-10">
           <h2 className="font-display text-2xl tracking-tight">
-            Want to see the code?
+            {isResearch ? "Read the thesis" : "Want to see the code?"}
           </h2>
           <p className="mt-3 max-w-xl text-muted">
-            {site.privateRepoNote} Reach out and I can walk through architecture
-            and implementation.
+            {isResearch
+              ? "Figures above are excerpts. The full PDF covers methods, four storm case studies, and limitations in detail."
+              : `${site.privateRepoNote} Reach out and I can walk through architecture and implementation.`}
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <a
-              href={`mailto:${site.email}?subject=${encodeURIComponent(
-                `${project.title} — code walkthrough`,
-              )}`}
-              className="inline-flex items-center justify-center rounded-sm bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-deep"
-            >
-              Email me
-            </a>
+            {pdfHref ? (
+              <a
+                href={pdfHref}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center rounded-sm bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-deep"
+              >
+                Download full PDF
+              </a>
+            ) : (
+              <a
+                href={`mailto:${site.email}?subject=${encodeURIComponent(
+                  `${project.title} — code walkthrough`,
+                )}`}
+                className="inline-flex items-center justify-center rounded-sm bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-deep"
+              >
+                Email me
+              </a>
+            )}
             <a
               href={site.linkedIn}
               target="_blank"
@@ -141,6 +164,16 @@ export function CaseStudy({
             >
               LinkedIn
             </a>
+            {pdfHref ? (
+              <a
+                href={`mailto:${site.email}?subject=${encodeURIComponent(
+                  `${project.title} — discussion`,
+                )}`}
+                className="inline-flex items-center justify-center rounded-sm border border-border bg-surface px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+              >
+                Email me
+              </a>
+            ) : null}
           </div>
         </section>
       </div>
