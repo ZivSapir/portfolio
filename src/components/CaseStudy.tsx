@@ -128,21 +128,51 @@ export function CaseStudy({
 
         <section className="border-t border-border pt-10">
           <h2 className="font-display text-2xl tracking-tight">
-            {isResearch ? "Want to go deeper?" : "Want to see the code?"}
+            {isResearch
+              ? "Want to go deeper?"
+              : project.liveUrl
+                ? "Try it"
+                : "Want to see the code?"}
           </h2>
           <p className="mt-3 max-w-xl text-muted">
             {isResearch
               ? "Figures above are selected excerpts. The full thesis isn’t published here — happy to walk through methods and results privately."
-              : `${site.privateRepoNote} Reach out and I can walk through architecture and implementation.`}
+              : project.privateRepo === false
+                ? "This project is public — open the live app or the repo, or reach out if you want a walkthrough."
+                : `${site.privateRepoNote} Reach out and I can walk through architecture and implementation.`}
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
+            {project.liveUrl ? (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center rounded-sm bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-deep"
+              >
+                Open live app
+              </a>
+            ) : null}
+            {project.githubUrl ? (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center rounded-sm border border-border bg-surface px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+              >
+                GitHub
+              </a>
+            ) : null}
             <a
               href={`mailto:${site.email}?subject=${encodeURIComponent(
                 isResearch
                   ? `${project.title} — discussion`
-                  : `${project.title} — code walkthrough`,
+                  : `${project.title} — walkthrough`,
               )}`}
-              className="inline-flex items-center justify-center rounded-sm bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-deep"
+              className={`inline-flex items-center justify-center rounded-sm px-5 py-2.5 text-sm font-medium transition-colors ${
+                project.liveUrl
+                  ? "border border-border bg-surface text-foreground hover:border-accent hover:text-accent"
+                  : "bg-accent text-white hover:bg-accent-deep"
+              }`}
             >
               Email me
             </a>

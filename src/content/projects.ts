@@ -32,16 +32,74 @@ export type Project = {
   media: ProjectMedia[];
   mediaVariant?: "phone" | "document" | "desktop";
   featured?: boolean;
+  liveUrl?: string;
+  githubUrl?: string;
+  /** Default true — product repos stay private unless set false */
+  privateRepo?: boolean;
 };
 
 export const projects: Project[] = [
+  {
+    slug: "cv-studio",
+    title: "CV Studio",
+    shortTitle: "CV Studio",
+    status: "live-mvp",
+    statusLabel: "Live",
+    featured: true,
+    mediaVariant: "desktop",
+    liveUrl: "https://zivsapir.github.io/cv-studio/",
+    githubUrl: "https://github.com/ZivSapir/cv-studio",
+    privateRepo: false,
+    oneLiner:
+      "Local-first YAML CV studio — one master of facts, job-specific overlays, A4 preview/PDF.",
+    blurb:
+      "Built a local-first CV editor (React, Vite, TypeScript): a YAML master as source of truth, base profiles and job-tailored versions as lightweight overrides, live A4 preview with overflow warning, compare mode, and bring-your-own AI tailoring — no accounts, no cloud resume store.",
+    tech: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "YAML",
+      "IndexedDB",
+      "GitHub Pages",
+      "Print CSS",
+    ],
+    problem:
+      "Job applications usually mean duplicating a Word/PDF resume per role. Facts drift, invented bullets creep in, and comparing versions is painful. Generic builders also push your CV into someone else’s cloud.",
+    betterThan: [
+      "One master of verified facts; job versions only store overrides (hide, reorder, rewrite) — not full forks that diverge.",
+      "Live A4 preview and one-page overflow warning so PDF export matches what you actually ship.",
+      "BYO AI: copy a structured prompt to ChatGPT/Gemini, paste YAML back — no API keys in the app, data stays local or in your browser.",
+    ],
+    smartChoices: [
+      {
+        title: "Override merge, not full CV copies",
+        why: "Saved versions extend master with hiddenBulletIds, bulletOverrides, and order fields — shared facts stay honest and easy to update once.",
+      },
+      {
+        title: "Dual storage backends",
+        why: "Same UI: Vite file API writes local YAML in dev; IndexedDB powers the public GitHub Pages build — no accounts required.",
+      },
+      {
+        title: "Print-to-PDF instead of a PDF library",
+        why: "A4 layout is CSS; browser print gives reliable one-pagers without heavy deps.",
+      },
+      {
+        title: "Privacy by default",
+        why: "Personal YAML is gitignored; the public repo ships example templates only. No cloud CV database.",
+      },
+    ],
+    stackNotes: [
+      "Shipped: master → base → saved versions, Edit + undo/redo, compare, AI tailor prompt flow, backup export/import, live Pages app.",
+      "Not shipped yet: in-app Gemini BYOK (explicitly deferred).",
+    ],
+    media: [],
+  },
   {
     slug: "home-co-op",
     title: "Home Co-Op",
     shortTitle: "Home Co-Op",
     status: "live-mvp",
     statusLabel: "Live MVP",
-    featured: true,
     oneLiner:
       "Household task coordination with a shared API for mobile and Telegram.",
     blurb:
